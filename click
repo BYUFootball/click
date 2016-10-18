@@ -2,23 +2,23 @@ import simplegui
 
 class ShapeAttributes:
     
-    def __init__(self):
-        self.line_width = 10
-        self.line_color = "navy"
-        self.fill_color = "teal"
+    def __init__(self, color,dawg,p):
+        self.line_width = p
+        self.line_color = color
+        self.fill_color = dawg
 
 class Circle:
     
-    def __init__(self, height, width):
+    def __init__(self, width, height):
         self.radius = 50
-        self.center_point = ( height, width)
+        self.center_point = ( width, height)
     
 
 class Character:
     
-    def __init__(self, height, width):
-        self.circle_shape = Circle(height, width)
-        self.shape_attributes = ShapeAttributes()
+    def __init__(self, width, height, color, sup, p):
+        self.circle_shape = Circle(width, height)
+        self.shape_attributes = ShapeAttributes(color, sup, p)
         
         
     def draw_me(self, canvas):
@@ -27,15 +27,16 @@ class Character:
             self.circle_shape.radius,
             self.shape_attributes.line_width,
             self.shape_attributes.line_color,
-            self.shape_attributes.fill_color
+            self.shape_attributes.fill_color,
         )
         
         
         #canvas.draw_circle((100, 50), 200, 500, 'Blue', 'White')
-       
-cliq = Character(500, 50)
-volcanion = Character(250, 250)
-wartortle = Character(400, 250)
+bryantsFavoriteColor = "grey"       
+linewidth = 40
+cliq = Character(175, 250,"blue", "green", 30)
+volcanion = Character(250, 250, "brown", "black", 22)
+wartortle = Character(325, 250, "red", bryantsFavoriteColor,linewidth)
 print type(cliq)
 
 
