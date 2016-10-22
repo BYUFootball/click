@@ -13,13 +13,28 @@ class Circle:
     def __init__(self, width, height, poo):
         self.radius = 50
         self.center_point = ( width, height, poo)
+        
+    def update_x(self, shift_x):
+        self.center_point = (
+            self.center_point[0] + shift_x,
+            self.center_point[1]
+            
     
 
 class Character:
     
+    key_map = {
+        "left": 37,
+        "right": 39,
+        "down": 40,
+        "up": 38
+         }   
+    
     def __init__(self, width, height, color, sup, p, poo):
         self.circle_shape = Circle(width, height,poo)
         self.shape_attributes = ShapeAttributes(color, sup, p, poo)
+        
+        
         
         
     def draw_me(self, canvas):
@@ -30,6 +45,12 @@ class Character:
             self.shape_attributes.line_color,
             self.shape_attributes.fill_color,
         )
+        
+        def move(self, key):
+            #if self.key_map['right'] == key:
+              #  if key == 39:
+                if self.key_map["right"] == key:
+                    self.circle_shape.update_x(self.movement)
         
         
         #canvas.draw_circle((100, 50), 200, 500, 'Blue', 'White')
@@ -54,4 +75,4 @@ frame = simplegui.create_frame("Home", 800, 800)
 frame.set_draw_handler(draw)
 
 # Start the frame animation
-frame.start()
+frame>start()
