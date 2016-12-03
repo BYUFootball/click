@@ -19,7 +19,10 @@ class Circle:
             self.center_point[0] + shift_x,
             self.center_point[1])
             
-    
+    def update_y(self, shift_y):
+        self.center_point = (
+            self.center_point[0],
+            self.center_point[1] + shift_y)
 
 class Character:
     
@@ -51,7 +54,10 @@ class Character:
               #  if key == 39:
                 if self.key_map["right"] == key:
                     self.circle_shape.update_x(self.movement)
-        
+                if self.key_map["left"] == key:
+                    self.circle_shape.update_x(-1 * self.movement)
+                if self.key_map["down"] == key:
+                    self.circle_shape.update_y(self.movement)
         
         #canvas.draw_circle((100, 50), 200, 500, 'Blue', 'White')
 bryantsFavoriteColor = "grey"       
