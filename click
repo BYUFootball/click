@@ -25,14 +25,19 @@ class Circle:
             self.center_point[0] + shift_x,
             self.center_point[1] + shift_y)
 
-class Character:
-    
-    key_map = {
+key_map = {
         "left": 37,
         "right": 39,
         "down": 40,
-        "up": 38
-         }   
+        "up": 38,
+        "space": 32,
+        "lucario":17,
+        "riolu":18
+         }     
+        
+class Character:
+    
+
     
     def __init__(self, width, height, color, sup, p, poo):
         self.circle_shape = Circle(width, height,poo)
@@ -51,15 +56,16 @@ class Character:
         )
         
     def move(self, key):
+                print key
             #if self.key_map['right'] == key:
               #  if key == 39:
-                if self.key_map["right"] == key:
+                if key_map["right"] == key:
                     self.circle_shape.update_x(self.movement)
-                if self.key_map["left"] == key:
+                if key_map["left"] == key:
                     self.circle_shape.update_x(-1 * self.movement)
-                if self.key_map["down"] == key:
+                if key_map["down"] == key:
                     self.circle_shape.update_y(self.movement)
-                if self.key_map["up"] == key:
+                if key_map["up"] == key:
                     self.circle_shape.update_y(-1 * self.movement)
         
         #canvas.draw_circle((100, 50), 200, 500, 'Blue', 'White')
@@ -79,10 +85,24 @@ def draw(canvas):
     volcanion.draw_me(canvas)
     wartortle.draw_me(canvas)
 
+class Mover:
+    def __init__(self, char):
+        self.characterToMove = char
+
+    def move(self, key):
+        if key_map["space"] == key:
+            self.characterToMove = volcanion
+        elif key_map["lucario"] == key:
+            self.characterToMove = wartortle
+        else:
+            self.characterToMove.move(key)
+
+mover = Mover(cliq)
+            
 # Create a frame and assign callbacks to event handlers
 frame = simplegui.create_frame("Home", 600, 600)
 frame.set_draw_handler(draw)
-frame.set_keydown_handler(cliq.move)
+frame.set_keydown_handler(mover.move)
 
 # Start the frame animation
 frame.start()
