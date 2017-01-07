@@ -31,7 +31,7 @@ key_map = {
         "down": 40,
         "up": 38,
         "space": 32,
-        "lucario":17,
+        "alt":17,
         "riolu":18,
         "w":87,
         "i":73
@@ -113,7 +113,7 @@ class KeyHandler:
     def handle(self, key):
         if key_map["space"] == key:
             self.characterToMove = volcanion
-        elif key_map["lucario"] == key:
+        elif key_map["alt"] == key:
             self.characterToMove = wartortle
         elif key_map["riolu"] == key:
             self.characterToMove = cliq
