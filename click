@@ -81,9 +81,11 @@ print type(cliq)
 list_circles = [cliq, wartortle, volcanion]
 
 
+
 def reverse():
-
-
+    tmp = list_circles[2]
+    list_circles[2] = list_circles[0]
+    list_circles[0] = tmp
 
 
 def rotate_list():
