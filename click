@@ -100,11 +100,17 @@ def draw(canvas):
     list_circles[1].draw_me(canvas)
     list_circles[2].draw_me(canvas)
 
-class Mover:
+class KeyHandler:
     def __init__(self, char):
         self.characterToMove = char
 
-    def move(self, key):
+        
+     
+#resize characters 
+#change color
+
+        
+    def handle(self, key):
         if key_map["space"] == key:
             self.characterToMove = volcanion
         elif key_map["lucario"] == key:
@@ -118,12 +124,12 @@ class Mover:
         else:
             self.characterToMove.move(key)
 
-mover = Mover(cliq)
+keyHandler = KeyHandler(cliq)
             
 # Create a frame and assign callbacks to event handlers
 frame = simplegui.create_frame("Home", 600, 600)
 frame.set_draw_handler(draw)
-frame.set_keydown_handler(mover.move)
+frame.set_keydown_handler(keyHandler.handle)
 
 # Start the frame animation
 frame.start()
