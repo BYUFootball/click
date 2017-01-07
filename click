@@ -32,7 +32,9 @@ key_map = {
         "up": 38,
         "space": 32,
         "lucario":17,
-        "riolu":18
+        "riolu":18,
+        "w":87,
+        "i":73
          }     
         
 class Character:
@@ -76,14 +78,25 @@ cliq = Character(175, 250,"blue", "green", 30, 200)
 volcanion = Character(250, 250, "brown", "black", 22, 230)
 wartortle = Character(325, 250, "red", bryantsFavoriteColor,linewidth, 130)
 print type(cliq)
+list_circles = [cliq, wartortle, volcanion]
+
+
+def reverse():
 
 
 
+
+def rotate_list():
+    tmp = list_circles[0]
+    list_circles[0] = list_circles[1]
+    list_circles[1] = list_circles[2]
+    list_circles[2] = tmp
+    
 # Handler to draw on canvas
 def draw(canvas):
-    cliq.draw_me(canvas)
-    volcanion.draw_me(canvas)
-    wartortle.draw_me(canvas)
+    list_circles[0].draw_me(canvas)
+    list_circles[1].draw_me(canvas)
+    list_circles[2].draw_me(canvas)
 
 class Mover:
     def __init__(self, char):
@@ -94,6 +107,12 @@ class Mover:
             self.characterToMove = volcanion
         elif key_map["lucario"] == key:
             self.characterToMove = wartortle
+        elif key_map["riolu"] == key:
+            self.characterToMove = cliq
+        elif key_map["w"] == key:
+            rotate_list()
+        elif key_map["i"] == key:
+            reverse()
         else:
             self.characterToMove.move(key)
 
