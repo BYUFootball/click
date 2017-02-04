@@ -7,7 +7,8 @@ class ShapeAttributes:
         self.line_width = p
         self.line_color = color
         self.fill_color = dawg
-
+        
+        
 class Circle:
     
     def __init__(self, width, height, radius):
@@ -34,11 +35,18 @@ key_map = {
         "alt":17,
         "riolu":18,
         "w":87,
-        "i":73
+        "i":73,
+        "b":66
          }     
         
 class Character:
-    
+ 
+
+
+
+
+    def change_color(self, new_color):
+        self.shape_attributes.fill_color = new_color
 
     
     def __init__(self, width, height, color, sup, p, poo):
@@ -82,6 +90,9 @@ list_circles = [cliq, wartortle, volcanion]
 
 
 
+
+
+
 def reverse():
     tmp = list_circles[2]
     list_circles[2] = list_circles[0]
@@ -103,10 +114,9 @@ def draw(canvas):
 class KeyHandler:
     def __init__(self, char):
         self.characterToMove = char
-
         
-     
-#resize characters 
+        
+#resize characters
 #change color
 
         
@@ -121,6 +131,8 @@ class KeyHandler:
             rotate_list()
         elif key_map["i"] == key:
             reverse()
+        elif key_map["b"] == key:
+            self.characterToMove.change_color("yellow")
         else:
             self.characterToMove.move(key)
 
