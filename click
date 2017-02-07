@@ -36,7 +36,8 @@ key_map = {
         "riolu":18,
         "w":87,
         "i":73,
-        "b":66
+        "b":66,
+        "n":78
          }     
         
 class Character:
@@ -45,9 +46,7 @@ class Character:
 
 
 
-    def change_color(self, new_color):
-        self.shape_attributes.fill_color = new_color
-
+   
     
     def __init__(self, width, height, color, sup, p, poo):
         self.circle_shape = Circle(width, height,poo)
@@ -88,9 +87,26 @@ wartortle = Character(325, 250, "red", bryantsFavoriteColor,linewidth, 130)
 print type(cliq)
 list_circles = [cliq, wartortle, volcanion]
 
+list_colors = ["blue", "black", "red", "white", "grey", "brown", "orange", "green","maroon", "purple" ]
+current_color = 0 
 
-
-
+def change_fill(character):
+        new_color = get_next_color()
+        character.shape_attributes.fill_color = new_color
+           
+    
+    
+def change_line(character):      
+        new_color = get_next_color()
+        character.shape_attributes.line_color = new_color
+            
+def get_next_color ():
+    global current_color
+    new_color = list_colors[current_color]
+    current_color = current_color + 1
+    if current_color >= len(list_colors):
+        current_color = 0
+    return new_color
 
 
 def reverse():
@@ -132,7 +148,9 @@ class KeyHandler:
         elif key_map["i"] == key:
             reverse()
         elif key_map["b"] == key:
-            self.characterToMove.change_color("yellow")
+            change_fill(self.characterToMove)
+        elif key_map["n"] == key:
+            change_line(self.characterToMove)
         else:
             self.characterToMove.move(key)
 
